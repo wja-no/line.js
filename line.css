@@ -1,0 +1,296 @@
+/* Baseline styles. The bit you should care about here is the box-sizing. Don't drop that. */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+html {
+  font-family: "gill sans", sans-serif;
+  line-height: 25px;
+  font-size: 16px;
+  background-position: top center;
+  background-repeat: repeat-y;
+}
+a {
+  color: inherit;
+  display: inline-block;
+  border-bottom: 1px solid rgb(48, 175, 239);
+  text-decoration: none;
+}
+
+/* Figure styles. These define the containing boxes for our pretty graphs. */
+
+figure {
+  margin: auto;
+  margin-bottom: 25px;
+}
+
+figure table {
+  display: none;
+}
+
+figcaption {
+  padding-top: 25px;
+  font-size: 13px;
+  color: rgb(100,100,100);
+}
+
+figure.sparklines {
+  padding-right: 0;
+}
+.sparklines a {
+  display: block;
+  height: auto;
+  font-size: 13px;
+}
+.sparklines figcaption {
+  float: none;
+  padding: 25px 25px 0 0;
+}
+
+figure.sparklines .draw {
+  display: inline-block;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+section.sparklines {
+  margin: 50px auto; 
+}
+section.sparklines + * {
+  clear: both; 
+}
+section.sparklines svg {
+  height: 50px;
+}
+
+section.sparklines figure .date {
+  display: none; 
+}
+
+section.sparklines figure .date:before {
+  content: " – ";
+}
+
+section.sparklines figure:hover .date {
+  display: inline; 
+}
+
+section.sparklines a {
+  color: rgb(100,100,100);
+  border-bottom: none;
+}
+
+/* The actual graphs are not drawn by line.js, but by a third-party library named Rickshaw. These styles make Rickshaw behave. */
+
+
+
+.rickshaw_graph .detail {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  bottom: 0;
+  width: 1px;
+}
+.rickshaw_graph .detail.inactive {
+  opacity: 0;
+}
+.rickshaw_graph .detail .item.active {
+  opacity: 1;
+}
+.rickshaw_graph .detail .x_label {
+  font-size: 12px;
+  position: absolute;
+  white-space: nowrap;
+  margin-top: 275px;
+  color: rgb(100,100,100);
+}
+
+.rickshaw_graph .detail .item.active {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+}
+.rickshaw_graph .detail .dot {
+  -webkit-box-sizing: content-box;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  border-radius: 100%;
+  position: absolute;
+  display: none;
+  background: #30afef;
+}
+.rickshaw_graph .detail .dot.active {
+  display: block;
+}
+
+.rickshaw_graph {
+  position: relative;
+}
+.rickshaw_graph svg {
+  display: block;  
+  overflow: hidden;
+}
+
+
+
+
+
+/* This part here isn't strictly needed for line.js to draw the graphs correctly, but sets the stage with a grid system the graphs will magically fit into. The grid system has four columns, each 275px wide, plus 25px gutter. It will show as many columns as there is room for: four on a big screen, three on a landscape tablet, two on a portrait tablet and one on a phone. The breakpoints here correspond with those in line.js. This grid system will be relased as a standalone, well-documented project later. But we're not there yet. */
+
+
+
+/* One column layout */
+@media all and (max-width: 624px) {
+
+  html {
+    padding: 50px 22px 50px 23px;
+    font-size: 16px;
+  }
+  figcaption {
+    text-align: center;
+  }
+  figure {
+    width: 275px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  figure.comparison {
+    margin: 0; 
+  }
+
+  html.grid {
+    background-image: url(gfx/0-columns.png);
+    background-repeat: repeat;
+  }
+  .rickshaw_graph .detail .x_label {
+    margin-top: 50px;
+  }
+
+
+}
+
+
+/* Two column layout */
+@media all and (min-width: 625px) and (max-width: 924px) {
+
+  html {
+    padding: 75px 0 75px 25px;
+  }
+
+  h1, article > p, ul, article > ol, address, pre, aside, blockquote {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 25px;
+  }
+  figure, section.sparklines {
+    width: 600px;
+  }
+  figure.line .draw {
+    height: 150px;
+  }
+  .rickshaw_graph .detail .x_label {
+    margin-top: 150px;
+  }
+
+
+  html.grid {
+    background-image: url(gfx/2-columns.png);
+  }
+}
+
+/* Two columns and up */
+@media all and (min-width: 625px) {
+  section.sparklines figure,
+  figure.comparison div {
+    float: left;
+    width: 300px;
+  }
+}
+
+/* Three column layout */
+@media all and (min-width: 925px) and (max-width: 1224px) {
+
+  html {
+    padding: 75px 0 75px 25px;
+  }
+
+  h1, article > p, article > ul, article > ol, address, pre, aside, blockquote {
+    width: 900px;
+    padding-right: 325px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  figure, section.sparklines {
+    width: 900px;
+  }
+  figure {
+    padding-right: 25px; 
+  }
+  figure.line .draw {
+    height: 225px;
+  }
+  figcaption {
+    width: 275px;
+    float: right;
+  }
+
+  .rickshaw_graph .detail .x_label {
+    margin-top: 225px;
+  }
+
+
+  html.grid {
+    background-image: url(gfx/3-columns.png);
+  }
+}
+
+/* Four column layout */
+@media all and (min-width: 1225px) {
+
+  html {
+    padding: 100px 0 100px 25px;
+  }
+
+  h1, article > p, article > ul, article > ol, address, pre, aside, blockquote {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 25px;
+  }
+
+  figure {
+    width: 600px;
+    padding-right: 25px;
+  }
+  figure.wide, section.sparklines {
+    width: 1200px;
+  }
+  figure.graph .draw {
+    height: 300px;
+  }
+
+  figure.sparklines .draw {
+    width: 300px;
+    height: 50px;
+  }
+
+  figcaption {
+    width: 300px;
+    float: right;
+    padding-left: 25px;
+  }
+
+  html.grid {
+    background-image: url(gfx/4-columns.png);
+  }
+}
+
+
