@@ -27,7 +27,17 @@ Download a copy of this repository, start editing that file, and you're ready to
 
 line.js is available under the MIT license, which basically says “you can use this for anything you want”.
 
-== Plans ahead ==
+## How do I get my data into this thing?
+
+If you're exporting data from a spreadsheet, export as a CSV file. Then open it in your favourite text editor and apply some search-and-replace magic.
+
+If the data comes from a program you can edit the output of, write the table header and footer manually, and have the program output something like:
+
+    <tr><th>$time</th><td>$value</td></tr>
+
+Then dump it all into a static HTML file.
+
+## Plans ahead
 
 line.js is a spin-off from a project at the WJA development agency, and still in its infancy.
 
