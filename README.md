@@ -2,7 +2,7 @@ There are many tools out there for drawing graphs in the browser, but most of th
 
 line.js is different. Anyone who knows a bit of HTML can get this thing to work.
 
-Here's how it works. Put a data table in your HTML document. Something like this:
+Put a data table in your HTML document. Something like this:
 
     <figure class='graph line'>
      <table>
@@ -19,7 +19,7 @@ Here's how it works. Put a data table in your HTML document. Something like this
 
 Then pull in the line.js script and stylesheet. Bam, you have a graph.
 
-Currently, line.js can draw simple line graphs and Edward Tufe-style sparklines. Here is a demo with annotated source code:
+Currently, line.js can draw simple line graphs and Edward Tufte-style sparklines. Here is a demo with annotated source code:
 
 http://wja.no/e/line.js/demo.html
 
@@ -27,7 +27,7 @@ Download a copy of this repository, start editing that file, and you're ready to
 
 line.js is available under the MIT license, which basically says “you can use this for anything you want”.
 
-## How do I get my data into this thing?
+### How do I get my data into this thing?
 
 If you're exporting data from a spreadsheet, export as a CSV file. Then open it in your favourite text editor and apply some search-and-replace magic.
 
@@ -37,9 +37,9 @@ If the data comes from a program you can edit the output of, write the table hea
 
 Then dump it all into a static HTML file.
 
-## Plans ahead
+### Plans ahead
 
-line.js is a spin-off from a project at the WJA development agency, and still in its infancy.
+line.js is a spin-off from a project at the [WJA](http://wja.no/) development agency and still in its infancy.
 
 The next step for the project is to allow authors to customize their graphs in the same declarative way as you'd fill it with data. By setting your preferred classes for the graph, its behaviour would change. So you could do: 
 
