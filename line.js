@@ -423,7 +423,7 @@ var setPara = function(name, root){
 	var fig = createEl('appendChild', 'figure', {}, root);
 	a = prepend('a', prop, fig);
 	caphtml = getText(name) + " <span class='date'></span>";
-	prepend('figcation', {innerHTML : caphtml}, a);
+	prepend('figcaption', {innerHTML : caphtml}, a);
 	prepend('div', {name: 'class', value: 'draw'}, a);
 
 	return a;
